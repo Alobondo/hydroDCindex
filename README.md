@@ -26,3 +26,6 @@ If you find an error in some function, want to report a typo in the documentatio
 
 # Keywords
 Hydrology, R package, Duration Curve, Goodness of Fit
+
+# References
+Yilmaz, K. K., H. V. Gupta, and T. Wagener (2008), A process-based diagnostic approach to model evaluation: Applicationto the NWS distributed hydrologic model, Water Resour. Res.,44, W09417, doi:10.1029/2007WR006716
