@@ -1,0 +1,16 @@
+Package: hydroDCindex
+Type: Package
+Title: Duration Curve Hydrological Model Indexes
+Version: 1.0.0
+Date: 2022-06-10
+Authors@R: person("Alonso", "Arriagada", email = "alonso.arriagada@usach.cl", role = c("aut", "cre"))
+Description: Indexes of Flow Duration Curves based on Yilmaz et al (2008).
+License: GPL-3
+LazyData: true
+Encoding: UTF-8
+RoxygenNote: 7.1.2
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
+Depends: R (>= 2.10)
