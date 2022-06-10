@@ -1,9 +1,10 @@
-#' Duration Curve Hydrological Model Index
+#' Duration Curve Hydrological Model Indexes
 #' @export
 #' @param Q_obs Column with daily observed flows
 #' @param Q_sim Column with daily simulated flows
+#' @param c_opt Results, default 1 for indexes, 2 for duration curve values and 3 for plot
 
-hydroDC_Index <- function(Q_obs, Q_sim) {
+hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
   n_obs = length(Q_obs)
   n_nas_obs = length(which(is.na(Q_obs)))
   n_sim = length(Q_sim)
@@ -65,6 +66,33 @@ hydroDC_Index <- function(Q_obs, Q_sim) {
   names = c("BiasFMS","BiasFHV","BiasFLV","BiasFMM_log","BiasFMM")
   values = c(round(BiasFMS,2),round(BiasFHV,2),round(BiasFLV,2),round(BiasFMM_log,2),round(BiasFMM,2))
   Indexes = data.frame("Indice" = names, "Valor_Porcentual" = values)
-  return(Indexes)
-  return(Result_DC)
+
+  if (c_opt == 3) {
+
+    # Plot for DC + Indexes
+
+    aux_max <- ceiling(max(c(max(Result_DC$Amount_Obs, na.rm = T), max(Result_DC$Amount_Sim,na.rm = T)),na.rm = T))
+
+    plot(Result_DC$Pexc, Result_DC$Amount_Obs, type = 'l', lwd = 1, col = 'black',
+         xlim = c(0,100), ylim = c(0.01, aux_max), log = 'y',
+         ylab = 'Mean daily flow', xlab = 'Exceedance probability (%)', main = "Daily Flow Duration Curve")
+    lines(Result_DC$Pexc, Result_DC$Amount_Sim, lwd = 1, col = 'red')
+    legend("topright", col = c("black","red"),
+           legend = c("Obs", "Sim"), lwd = 2, cex = 1,
+           horiz = F)
+
+    text_in1 <- paste0(Indexes$Indice, ' = ', round(Indexes$Valor_Porcentual,digits = 2), '%')
+    text(30,25, text_in1[1], col="black", font = 3, pos = 1)
+    text(30,12, text_in1[2], col="black", font = 3, pos = 1)
+    text(30,6, text_in1[3], col="black", font = 3, pos = 1)
+
+  } else if (c_opt == 2) {
+
+    return(Result_DC)
+
+  } else {
+
+    return(Indexes)
+
+  }
 }

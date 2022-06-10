@@ -2,15 +2,17 @@
 % Please edit documentation in R/hydroDCindex.R
 \name{hydroDC_Index}
 \alias{hydroDC_Index}
-\title{Duration Curve Hydrological Model Index}
+\title{Duration Curve Hydrological Model Indexes}
 \usage{
-hydroDC_Index(Q_obs, Q_sim)
+hydroDC_Index(Q_obs, Q_sim, c_opt)
 }
 \arguments{
 \item{Q_obs}{Column with daily observed flows}
 
 \item{Q_sim}{Column with daily simulated flows}
+
+\item{c_opt}{Results, default 1 for indexes, 2 for duration curve values and 3 for plot}
 }
 \description{
-Duration Curve Hydrological Model Index
+Duration Curve Hydrological Model Indexes
 }
