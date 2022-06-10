@@ -12,9 +12,10 @@ library(hydroDCindex)
 # Usage
 Functions | Description |
 --- | --- |
-```hydroDC_Index(Q_obs, Q_sim)``` | Compute Duration Curve Hydrological Model Indexes. |
+```hydroDC_Index(Q_obs, Q_sim, c_res)``` | Compute Duration Curve Hydrological Model Indexes. |
 ```Q_obs``` | Column with daily observed flows. |
 ```Q_sim``` | Column with daily simulates flows. |
+```c_res``` | Results, default 1 for indexes, 2 for duration curve values and 3 for plot. |
 
 ```hydroDC_Index::Q_obs``` Example containing observed flows.
 
