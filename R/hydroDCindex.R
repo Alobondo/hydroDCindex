@@ -65,5 +65,6 @@ hydroDC_Index <- function(Q_obs, Q_sim) {
   names = c("BiasFMS","BiasFHV","BiasFLV","BiasFMM_log","BiasFMM")
   values = c(round(BiasFMS,2),round(BiasFHV,2),round(BiasFLV,2),round(BiasFMM_log,2),round(BiasFMM,2))
   Indexes = data.frame("Indice" = names, "Valor_Porcentual" = values)
-  return(Indexes, Result_DC)
+  return(Indexes)
+  return(Result_DC)
 }
