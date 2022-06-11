@@ -11,7 +11,7 @@ hydroDC_Index(Q_obs, Q_sim, c_opt)
 
 \item{Q_sim}{Column with daily simulated flows}
 
-\item{c_opt}{Results, default 1 for indexes, 2 for duration curve values and 3 for plot}
+\item{c_opt}{Results, default 1 for indexes, 2 for duration curve values, 3 for CD plot and 4 for scatter plot}
 }
 \description{
 Duration Curve Hydrological Model Indexes

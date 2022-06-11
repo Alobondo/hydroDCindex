@@ -9,6 +9,9 @@ License: GPL-3
 LazyData: true
 Encoding: UTF-8
 RoxygenNote: 7.1.2
+Imports:
+    stats,
+    hydroGOF
 Suggests: 
     rmarkdown,
     knitr
