@@ -1,6 +1,9 @@
 # hydroDCindex
 R package for compute Duration Curve Hydrological Model Indexes based on Yilmaz (Yilmaz et al., 2008) methodology
 
+# Requirements
+Dependencies: stats, hydroGOF
+
 # Installation
 You can install the development version of **hydroCHISQR** from GitHub with this R command:
 ```
@@ -15,7 +18,7 @@ Functions | Description |
 ```hydroDC_Index(Q_obs, Q_sim, c_res)``` | Compute Duration Curve Hydrological Model Indexes. |
 ```Q_obs``` | Column with daily observed flows. |
 ```Q_sim``` | Column with daily simulates flows. |
-```c_res``` | Results, default 1 for indexes, 2 for duration curve values and 3 for plot. |
+```c_res``` | Results, default 1 for indexes, 2 for duration curve values, 3 for CD plot and 4 for scatter plot. |
 
 ```hydroDC_Index::Q_obs``` Example containing observed flows.
 
