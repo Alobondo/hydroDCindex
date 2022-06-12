@@ -5,7 +5,7 @@ R package for compute Duration Curve Hydrological Model Indexes based on Yilmaz 
 Dependencies: stats, hydroGOF
 
 # Installation
-You can install the development version of **hydroCHISQR** from GitHub with this R command:
+You can install the development version of **hydroDCindex** from GitHub with this R command:
 ```
 # install.packages("remotes")
 remotes::install_github("Alobondo/hydroDCindex")
