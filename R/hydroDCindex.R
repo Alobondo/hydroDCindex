@@ -2,7 +2,7 @@
 #' @export
 #' @param Q_obs Column with daily observed flows
 #' @param Q_sim Column with daily simulated flows
-#' @param c_opt Results, default 1 for indexes, 2 for duration curve values, 3 for CD plot and 4 for scatter plot
+#' @param c_opt Results, default 1 for indexes, 2 for duration curve values, 3 for DC plot and 4 for scatter plot
 #' @import stats hydroGOF
 
 hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
@@ -77,23 +77,24 @@ hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
   if (c_opt == 4) {
 
     aux_max <- ceiling(max(c(Q_obs, Q_sim), na.rm = T))
-    plot(Q_obs, Q_sim, pch = 19, ylab = 'Qsim', xlab = 'Qobs',
-         ylim = c(0,aux_max), xlim = c(0,aux_max), col = 'red')
-    abline(a = 0, b = 1, lty = 2, col = 'blue')
-
     text_in1 <- paste0('r_pearson = ', round(r_pearson, digits = 2))
-    text(5/30*aux_max,28/30*aux_max, text_in1, col="blue", font = 4, pos = 1)
-
     text_in2 <- paste0('MAE = ', round(MAE, digits = 2))
-    text(5/30*aux_max,26/30*aux_max, text_in2, col="blue", font = 4, pos = 1)
-
     text_in3 <- paste0('R^2 = ', round(rsq, digits = 2))
-    text(5/30*aux_max,24/30*aux_max, text_in3, col="blue", font = 4, pos = 1)
-
     text_in4 <- paste0('NSE = ', round(NSE, digits = 2))
-    text(5/30*aux_max,22/30*aux_max, text_in2, col="blue", font = 4, pos = 1)
-
     text_in5 <- paste0('KGE = ', round(KGE, digits = 2))
+
+    plot(Q_obs, Q_sim, pch = 19, ylab = 'Qsim', xlab = 'Qobs',
+         ylim = c(0,aux_max), xlim = c(0,aux_max), col = 'red') +
+    abline(a = 0, b = 1, lty = 2, col = 'blue') +
+
+    text(5/30*aux_max,28/30*aux_max, text_in1, col="blue", font = 4, pos = 1) +
+
+    text(5/30*aux_max,26/30*aux_max, text_in2, col="blue", font = 4, pos = 1) +
+
+    text(5/30*aux_max,24/30*aux_max, text_in3, col="blue", font = 4, pos = 1) +
+
+    text(5/30*aux_max,22/30*aux_max, text_in2, col="blue", font = 4, pos = 1) +
+
     text(5/30*aux_max,20/30*aux_max, text_in3, col="blue", font = 4, pos = 1)
 
   } else if (c_opt == 3) {
