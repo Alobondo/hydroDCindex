@@ -93,9 +93,9 @@ hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
 
     text(5/30*aux_max,24/30*aux_max, text_in3, col="blue", font = 4, pos = 1) +
 
-    text(5/30*aux_max,22/30*aux_max, text_in2, col="blue", font = 4, pos = 1) +
+    text(5/30*aux_max,22/30*aux_max, text_in4, col="blue", font = 4, pos = 1) +
 
-    text(5/30*aux_max,20/30*aux_max, text_in3, col="blue", font = 4, pos = 1)
+    text(5/30*aux_max,20/30*aux_max, text_in5, col="blue", font = 4, pos = 1)
 
   } else if (c_opt == 3) {
 
