@@ -68,9 +68,9 @@ hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
   values = c(round(BiasFMS,2),round(BiasFHV,2),round(BiasFLV,2),round(BiasFMM_log,2),round(BiasFMM,2))
   Indexes = data.frame("Indice" = names, "Valor_Porcentual" = values)
 
-  r_pearson <- stats::cor.test(Q_sim, Q_obs)
-  MAE <- sum(abs(Q_obs - Q_sim))/length(Q_obs)
-  rsq <- cor(Q_sim, Q_obs) ^ 2
+  r_pearson <- stats::cor.test(Q_sim, Q_obs)[[4]]
+  MAE <- hydroGOF::gof(Q_sim, Q_obs)[2]
+  rsq <- hydroGOF::gof(Q_sim, Q_obs)[17]
   NSE <- hydroGOF::gof(Q_sim, Q_obs)[9]
   KGE <- hydroGOF::gof(Q_sim, Q_obs)[19]
 
