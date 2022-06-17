@@ -7,7 +7,7 @@
 \format{
 A object with 13514 rows and 1 variable:
 \describe{
-\item{Q_obs}{observations}
+\item{Q_obs}{observations, runoff in mm per day}
 }
 }
 \usage{

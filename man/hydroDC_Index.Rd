@@ -16,3 +16,30 @@ hydroDC_Index(Q_obs, Q_sim, c_opt)
 \description{
 Duration Curve Hydrological Model Indexes
 }
+\details{
+{
+If \code{c_opt=1}, it computes the numerical values of: \cr
+'BiasFMS','BiasFHV','BiasFLV','BiasFMM_log','BiasFMM'
+If \code{c_opt=2}, it computes the duration curve values: \cr
+'Pexc','Amount_Obs','Amount_Sim'
+If \code{c_opt=3}, it plots the duration curves.
+If \code{c_opt=4}, it plots scattered values and computes the numerical values of: \cr
+'r_pearson','MAE','rsq','NSE','KGE'
+}
+}
+\examples{
+\dontrun{
+  Obs <- hydroDCindex::Q_obs
+  Sim <- hydroDCindex::Q_sim
+  # option 1 for indexes
+  hydroDCindex::hydroDC_Index(Obs, Sim, 1)
+  # option 2 for duration curve values
+  hydroDCindex::hydroDC_Index(Obs, Sim, 2)
+  # option 3 for duration curve plot
+  hydroDCindex::hydroDC_Index(Obs, Sim, 3)
+  # option 4 for scatter plot with goodness of fit tests
+  hydroDCindex::hydroDC_Index(Obs, Sim, 4)
+}
+
+
+}

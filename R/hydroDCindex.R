@@ -4,6 +4,51 @@
 #' @param Q_sim Column with daily simulated flows
 #' @param c_opt Results, default 1 for indexes, 2 for duration curve values, 3 for DC plot and 4 for scatter plot
 #' @import stats hydroGOF
+#'
+#' @details{
+#' If \code{c_opt=1}, it computes the numerical values of: \cr
+#' 'BiasFMS','BiasFHV','BiasFLV','BiasFMM_log','BiasFMM'
+#' If \code{c_opt=2}, it computes the duration curve values: \cr
+#' 'Pexc','Amount_Obs','Amount_Sim'
+#' If \code{c_opt=3}, it plots the duration curves.
+#' If \code{c_opt=4}, it plots scattered values and computes the numerical values of: \cr
+#' 'r_pearson','MAE','rsq','NSE','KGE'
+#' }
+#'
+#' @value{
+#' \item{BiasFMS}{Diagnosis of vertical redistribution in the midsection of the DC}
+#' \item{BiasFHV}{Bias in peak flows}
+#' \item{BiasFLV}{Bias at low flows}
+#' \item{BiasFMM_log}{Log_Mean Flow Bias}
+#' \item{BiasFMM}{Mean Flow Bias}
+#'
+#' \item{Pexc}{Exceedance probability}
+#' \item{Amount_Obs}{Observations in ascending order}
+#' \item{Amount_Sim}{Simulations in ascending order}
+#'
+#' \item{r_pearson}{Pearson product-moment correlation coefficient ( -1 <= r <= 1 )}
+#' \item{MAE}{Mean Absolute Error}
+#' \item{rsq}{Coefficient of Determination ( 0 <= R2 <= 1 )}
+#' \item{NSE}{Nash-Sutcliffe Efficiency ( -Inf <= NSE <= 1 )}
+#' \item{KGE}{Kling-Gupta Efficiency ( 0 <= KGE <= 1 )}
+#'
+#' }
+#'
+#' @examples
+#' \dontrun{
+#'   Obs <- hydroDCindex::Q_obs
+#'   Sim <- hydroDCindex::Q_sim
+#'   # option 1 for indexes
+#'   hydroDCindex::hydroDC_Index(Obs, Sim, 1)
+#'   # option 2 for duration curve values
+#'   hydroDCindex::hydroDC_Index(Obs, Sim, 2)
+#'   # option 3 for duration curve plot
+#'   hydroDCindex::hydroDC_Index(Obs, Sim, 3)
+#'   # option 4 for scatter plot with goodness of fit tests
+#'   hydroDCindex::hydroDC_Index(Obs, Sim, 4)
+#' }
+#'
+#'
 
 hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
   n_obs = length(Q_obs)
@@ -15,7 +60,7 @@ hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
     n_nas = max(n_nas_obs,n_nas_sim)
   }
   if (n_obs != n_sim) {
-    print("Q_obs y Q_sim does not have same amount of data")
+    message("Q_obs y Q_sim does not have same amount of data")
   }
   # Duration Curve for Q_obs
   Registros = sort(Q_obs, decreasing = TRUE, na.last = T)
@@ -66,7 +111,7 @@ hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
   # df of indexes
   names = c("BiasFMS","BiasFHV","BiasFLV","BiasFMM_log","BiasFMM")
   values = c(round(BiasFMS,2),round(BiasFHV,2),round(BiasFLV,2),round(BiasFMM_log,2),round(BiasFMM,2))
-  Indexes = data.frame("Indice" = names, "Valor_Porcentual" = values)
+  Indexes = data.frame("Index" = names, "Percentage" = values)
 
   r_pearson <- stats::cor.test(Q_sim, Q_obs)[[4]]
   MAE <- hydroGOF::gof(Q_sim, Q_obs)[2]
@@ -111,7 +156,7 @@ hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
            legend = c("Obs", "Sim"), lwd = 2, cex = 1,
            horiz = F)
 
-    text_in1 <- paste0(Indexes$Indice, ' = ', round(Indexes$Valor_Porcentual,digits = 2), '%')
+    text_in1 <- paste0(Indexes$Index, ' = ', round(Indexes$Percentage,digits = 2), '%')
     text(30,25, text_in1[1], col="black", font = 3, pos = 1)
     text(30,12, text_in1[2], col="black", font = 3, pos = 1)
     text(30,6, text_in1[3], col="black", font = 3, pos = 1)
