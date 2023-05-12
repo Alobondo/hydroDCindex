@@ -5,9 +5,9 @@ Version: 1.0.0
 Date: 2022-06-10
 Authors@R: person("Alonso", "Arriagada", email = "alonso.arriagada@usach.cl",
                   role = c("aut", "cre"))
-Description: The package allows you to obtain duration curves of daily flow
+Description: Compute duration curves of daily flow
               series, both real and modeled, to be compared through indexes of 
-              flow duration curves. The package functions include comparartive
+              flow duration curves. The package functions include comparative
               plots and goodness of fit tests. Flow duration curve indexes are
               based on: Yilmaz et al., (2008) <DOI:10.1029/2007WR006716>.
 License: GPL-3
