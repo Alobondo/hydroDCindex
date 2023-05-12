@@ -20,9 +20,9 @@ Functions | Description |
 ```Q_sim``` | Column with daily simulates flows. |
 ```c_res``` | Results, default 1 for indexes, 2 for duration curve values, 3 for DC plot and 4 for scatter plot. |
 
-```hydroDC_Index::Q_obs``` Example containing observed flows.
+```hydroDCindex::Q_obs``` Example containing observed flows.
 
-```hydroDC_Index::Q_sim``` Example containing simulated flows.
+```hydroDCindex::Q_sim``` Example containing simulated flows.
 
 # Reporting bugs
 If you find an error in some function, want to report a typo in the documentation or submit a recommendation, you can do it [here](https://github.com/Alobondo/hydroDC_Index/issues)
