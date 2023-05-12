@@ -1,8 +1,8 @@
 Package: hydroDCindex
 Type: Package
 Title: Duration Curve Hydrological Model Indexes
-Version: 1.0.0
-Date: 2022-06-10
+Version: 1.0.1
+Date: 2023-05-12
 Authors@R: person("Alonso", "Arriagada", email = "alonso.arriagada@usach.cl",
                   role = c("aut", "cre"))
 Description: Compute duration curves of daily flow
