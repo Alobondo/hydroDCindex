@@ -26,9 +26,27 @@ If \code{c_opt=3}, it plots the duration curves.
 If \code{c_opt=4}, it plots scattered values and computes the numerical values of: \cr
 'r_pearson','MAE','rsq','NSE','KGE'
 }
+
+\describe{
+\item{BiasFMS}{Diagnosis of vertical redistribution in the midsection of the duration curve}
+\item{BiasFHV}{Bias in peak flows}
+\item{BiasFLV}{Bias at low flows}
+\item{BiasFMM_log}{Log_Mean Flow Bias}
+\item{BiasFMM}{Mean Flow Bias}
+
+\item{Pexc}{Exceedance probability computed with Weibull formula}
+\item{Amount_Obs}{Observations in ascending order}
+\item{Amount_Sim}{Simulations in ascending order}
+
+\item{r_pearson}{Imported method from stats package, results in the Pearson product-moment correlation coefficient ( -1 <= r <= 1 )}
+\item{MAE}{Imported method from ie2misc package, results in the Mean Absolute Error}
+\item{rsq}{Results in the Coefficient of Determination, estimated as the squared of correlation ( 0 <= R2 <= 1 )}
+\item{NSE}{Imported method from ie2misc package, results in the Nash-Sutcliffe Efficiency ( -Inf <= NSE <= 1 )}
+\item{KGE}{Results in the Kling-Gupta Efficiency ( 0 <= KGE <= 1 )}
+}
 }
 \examples{
-\dontrun{
+
   Obs <- hydroDCindex::Q_obs
   Sim <- hydroDCindex::Q_sim
   # option 1 for indexes
@@ -39,7 +57,6 @@ If \code{c_opt=4}, it plots scattered values and computes the numerical values o
   hydroDCindex::hydroDC_Index(Obs, Sim, 3)
   # option 4 for scatter plot with goodness of fit tests
   hydroDCindex::hydroDC_Index(Obs, Sim, 4)
-}
 
 
 }

@@ -1,23 +1,18 @@
 Package: hydroDCindex
 Type: Package
 Title: Duration Curve Hydrological Model Indexes
-Version: 1.0.1
-Date: 2023-05-12
-Authors@R: person("Alonso", "Arriagada", email = "alonso.arriagada@usach.cl",
-                  role = c("aut", "cre"))
-Description: Compute duration curves of daily flow
-              series, both real and modeled, to be compared through indexes of 
-              flow duration curves. The package functions include comparative
-              plots and goodness of fit tests. Flow duration curve indexes are
-              based on: Yilmaz et al., (2008) <DOI:10.1029/2007WR006716>.
+Version: 1.0.0
+Date: 2023-12-27
+Authors@R: person("Alonso", "Arriagada", email = "alonso.arriagada@usach.cl",role = c("aut", "cre"))
+Description: Compute duration curves of daily flow series, both real and modeled, to be compared through indexes of flow duration curves. The package functions include comparative plots and goodness of fit tests. Flow duration curve indexes are based on: Yilmaz et al., (2008) <DOI:10.1029/2007WR006716>.
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Imports:
     stats,
-    hydroGOF
-Suggests: 
+    ie2misc
+Suggests:
     rmarkdown,
     knitr
 VignetteBuilder: knitr

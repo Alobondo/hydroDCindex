@@ -3,7 +3,7 @@
 #' @param Q_obs Column with daily observed flows
 #' @param Q_sim Column with daily simulated flows
 #' @param c_opt Results, default 1 for indexes, 2 for duration curve values, 3 for DC plot and 4 for scatter plot
-#' @import stats hydroGOF
+#' @import stats ie2misc
 #'
 #' @details{
 #' If \code{c_opt=1}, it computes the numerical values of: \cr
@@ -15,27 +15,26 @@
 #' 'r_pearson','MAE','rsq','NSE','KGE'
 #' }
 #'
-#' @value{
-#' \item{BiasFMS}{Diagnosis of vertical redistribution in the midsection of the DC}
+#' \describe{
+#' \item{BiasFMS}{Diagnosis of vertical redistribution in the midsection of the duration curve}
 #' \item{BiasFHV}{Bias in peak flows}
 #' \item{BiasFLV}{Bias at low flows}
 #' \item{BiasFMM_log}{Log_Mean Flow Bias}
 #' \item{BiasFMM}{Mean Flow Bias}
 #'
-#' \item{Pexc}{Exceedance probability}
+#' \item{Pexc}{Exceedance probability computed with Weibull formula}
 #' \item{Amount_Obs}{Observations in ascending order}
 #' \item{Amount_Sim}{Simulations in ascending order}
 #'
-#' \item{r_pearson}{Pearson product-moment correlation coefficient ( -1 <= r <= 1 )}
-#' \item{MAE}{Mean Absolute Error}
-#' \item{rsq}{Coefficient of Determination ( 0 <= R2 <= 1 )}
-#' \item{NSE}{Nash-Sutcliffe Efficiency ( -Inf <= NSE <= 1 )}
-#' \item{KGE}{Kling-Gupta Efficiency ( 0 <= KGE <= 1 )}
-#'
+#' \item{r_pearson}{Imported method from stats package, results in the Pearson product-moment correlation coefficient ( -1 <= r <= 1 )}
+#' \item{MAE}{Imported method from ie2misc package, results in the Mean Absolute Error}
+#' \item{rsq}{Results in the Coefficient of Determination, estimated as the squared of correlation ( 0 <= R2 <= 1 )}
+#' \item{NSE}{Imported method from ie2misc package, results in the Nash-Sutcliffe Efficiency ( -Inf <= NSE <= 1 )}
+#' \item{KGE}{Results in the Kling-Gupta Efficiency ( 0 <= KGE <= 1 )}
 #' }
 #'
 #' @examples
-#' \dontrun{
+#'
 #'   Obs <- hydroDCindex::Q_obs
 #'   Sim <- hydroDCindex::Q_sim
 #'   # option 1 for indexes
@@ -46,7 +45,6 @@
 #'   hydroDCindex::hydroDC_Index(Obs, Sim, 3)
 #'   # option 4 for scatter plot with goodness of fit tests
 #'   hydroDCindex::hydroDC_Index(Obs, Sim, 4)
-#' }
 #'
 #'
 
@@ -114,10 +112,11 @@ hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
   Indexes = data.frame("Index" = names, "Percentage" = values)
 
   r_pearson <- stats::cor.test(Q_sim, Q_obs)[[4]]
-  MAE <- hydroGOF::gof(Q_sim, Q_obs)[2]
-  rsq <- hydroGOF::gof(Q_sim, Q_obs)[17]
-  NSE <- hydroGOF::gof(Q_sim, Q_obs)[9]
-  KGE <- hydroGOF::gof(Q_sim, Q_obs)[19]
+  MAE <- ie2misc::mae(Q_sim, Q_obs, na.rm=FALSE)
+  rsq <- stats::cor(Q_sim, Q_obs)^2
+  NSE <- ie2misc::vnse(Q_sim, Q_obs, na.rm=FALSE)
+  KGE <- 1 - ((r_pearson - 1)^2 + (mean(Q_sim)/mean(Q_obs) - 1)^2 +(
+    (sd(Q_sim)/mean(Q_sim))/(sd(Q_obs)/mean(Q_obs)) - 1)^2)^0.5
 
   if (c_opt == 4) {
 
