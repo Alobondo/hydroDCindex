@@ -10,8 +10,7 @@ LazyData: true
 Encoding: UTF-8
 RoxygenNote: 7.2.3
 Imports:
-    stats,
-    ie2misc
+    stats
 Suggests:
     rmarkdown,
     knitr
