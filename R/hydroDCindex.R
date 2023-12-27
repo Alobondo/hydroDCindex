@@ -3,7 +3,7 @@
 #' @param Q_obs Column with daily observed flows
 #' @param Q_sim Column with daily simulated flows
 #' @param c_opt Results, default 1 for indexes, 2 for duration curve values, 3 for DC plot and 4 for scatter plot
-#' @import stats ie2misc
+#' @import stats
 #'
 #' @details{
 #' If \code{c_opt=1}, it computes the numerical values of: \cr
@@ -112,11 +112,21 @@ hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
   Indexes = data.frame("Index" = names, "Percentage" = values)
 
   r_pearson <- stats::cor.test(Q_sim, Q_obs)[[4]]
-  MAE <- ie2misc::mae(Q_sim, Q_obs, na.rm=FALSE)
+
+  MAE <- mean(abs(Q_sim - Q_obs), na.rm = T)
+
   rsq <- stats::cor(Q_sim, Q_obs)^2
-  NSE <- ie2misc::vnse(Q_sim, Q_obs, na.rm=FALSE)
-  KGE <- 1 - ((r_pearson - 1)^2 + (mean(Q_sim)/mean(Q_obs) - 1)^2 +(
-    (sd(Q_sim)/mean(Q_sim))/(sd(Q_obs)/mean(Q_obs)) - 1)^2)^0.5
+
+  denominator <- sum((na.omit(Q_obs) - mean(Q_obs, na.rm = T))^2)
+  if (denominator != 0) {
+    NSE <- 1 - (sum((Q_obs - Q_sim)^2) / denominator)
+  } else {
+    NSE <- NA
+    warning("'sum((obs - mean(obs))^2)=0' => it is not possible to compute 'NSE'")
+  }
+
+  KGE <- 1 - ((r_pearson - 1)^2 + (mean(Q_sim, na.rm = T)/mean(Q_obs, na.rm = T) - 1)^2 +(
+    (sd(Q_sim, na.rm = T)/mean(Q_sim, na.rm = T))/(sd(Q_obs, na.rm = T)/mean(Q_obs, na.rm = T)) - 1)^2)^0.5
 
   if (c_opt == 4) {
 
