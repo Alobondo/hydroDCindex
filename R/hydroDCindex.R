@@ -115,11 +115,11 @@ hydroDC_Index <- function(Q_obs, Q_sim, c_opt) {
 
   MAE <- mean(abs(Q_sim - Q_obs), na.rm = T)
 
-  rsq <- stats::cor(Q_sim, Q_obs)^2
+  rsq <- (r_pearson)^2
 
   denominator <- sum((na.omit(Q_obs) - mean(Q_obs, na.rm = T))^2)
   if (denominator != 0) {
-    NSE <- 1 - (sum((Q_obs - Q_sim)^2) / denominator)
+    NSE <- 1 - (sum((na.omit(Q_obs - Q_sim))^2) / denominator)
   } else {
     NSE <- NA
     warning("'sum((obs - mean(obs))^2)=0' => it is not possible to compute 'NSE'")
