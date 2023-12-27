@@ -2,7 +2,7 @@
 R package for compute Duration Curve Hydrological Model Indexes based on Yilmaz (Yilmaz et al., 2008) methodology
 
 # Requirements
-Dependencies: stats, hydroGOF
+Dependencies: stats, ie2misc
 
 # Installation
 You can install the development version of **hydroDCindex** from GitHub with this R command:
