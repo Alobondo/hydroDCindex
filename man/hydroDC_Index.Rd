@@ -13,6 +13,33 @@ hydroDC_Index(Q_obs, Q_sim, c_opt)
 
 \item{c_opt}{Results, default 1 for indexes, 2 for duration curve values, 3 for DC plot and 4 for scatter plot}
 }
+\value{
+BiasFMS: Diagnosis of vertical redistribution in the midsection of the duration curve.
+
+BiasFHV: Bias in peak flows.
+
+BiasFLV: Bias at low flows.
+
+BiasFMM_log: Log_Mean Flow Bias.
+
+BiasFMM: Mean Flow Bias.
+
+Pexc: Exceedance probability computed with Weibull formula.
+
+Amount_Obs: Observations in ascending order.
+
+Amount_Sim: Simulations in ascending order.
+
+r_pearson: Imported method from stats package, results in the Pearson product-moment correlation coefficient, -1 <= r_pearson <= 1
+
+MAE: Imported method from ie2misc package, results in the Mean Absolute Error.
+
+rsq: Results in the Coefficient of Determination, estimated as the squared of correlation, 0 <= R2 <= 1
+
+NSE: Imported method from ie2misc package, results in the Nash-Sutcliffe Efficiency, -Inf <= NSE <= 1
+
+KGE: Results in the Kling-Gupta Efficiency, 0 <= KGE <= 1
+}
 \description{
 Duration Curve Hydrological Model Indexes
 }
@@ -25,24 +52,6 @@ If \code{c_opt=2}, it computes the duration curve values: \cr
 If \code{c_opt=3}, it plots the duration curves.
 If \code{c_opt=4}, it plots scattered values and computes the numerical values of: \cr
 'r_pearson','MAE','rsq','NSE','KGE'
-}
-
-\describe{
-\item{BiasFMS}{Diagnosis of vertical redistribution in the midsection of the duration curve}
-\item{BiasFHV}{Bias in peak flows}
-\item{BiasFLV}{Bias at low flows}
-\item{BiasFMM_log}{Log_Mean Flow Bias}
-\item{BiasFMM}{Mean Flow Bias}
-
-\item{Pexc}{Exceedance probability computed with Weibull formula}
-\item{Amount_Obs}{Observations in ascending order}
-\item{Amount_Sim}{Simulations in ascending order}
-
-\item{r_pearson}{Imported method from stats package, results in the Pearson product-moment correlation coefficient ( -1 <= r <= 1 )}
-\item{MAE}{Imported method from ie2misc package, results in the Mean Absolute Error}
-\item{rsq}{Results in the Coefficient of Determination, estimated as the squared of correlation ( 0 <= R2 <= 1 )}
-\item{NSE}{Imported method from ie2misc package, results in the Nash-Sutcliffe Efficiency ( -Inf <= NSE <= 1 )}
-\item{KGE}{Results in the Kling-Gupta Efficiency ( 0 <= KGE <= 1 )}
 }
 }
 \examples{
