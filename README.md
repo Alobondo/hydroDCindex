@@ -1,4 +1,4 @@
-# hydroDCindex <img src="man/Figures/hydroDCindex_logo.png" align="right" width="120px" height="130px" />
+# hydroDCindex <img src="man/Figures/hydroDCindex_logo.png" align="right" width="180px" height="195px" />
 R package for compute Duration Curve Hydrological Model Indexes based on Yilmaz (Yilmaz et al., 2008) methodology
 
 # Requirements
