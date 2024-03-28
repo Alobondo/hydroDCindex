@@ -5,7 +5,11 @@ R package for compute Duration Curve Hydrological Model Indexes based on Yilmaz 
 Dependencies: stats
 
 # Installation
-You can install the development version of **hydroDCindex** from GitHub with this R command:
+You can install the currently-released version of **hydroDCindex** from CRAN with this R command:
+```
+install.packages("hydroDCindex")
+```
+Alternatively, you can install the development version from GitHub with:
 ```
 # install.packages("remotes")
 remotes::install_github("Alobondo/hydroDCindex")
